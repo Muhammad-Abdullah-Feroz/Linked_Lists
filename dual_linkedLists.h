@@ -33,6 +33,17 @@ dual_linkedLists<T>::dual_linkedLists()
 template <class T>
 dual_linkedLists<T>::~dual_linkedLists()
 {
+    node *nextPtr;
+    node *nodePtr;
+    if (head)
+    {
+        nodePtr = head;
+        while(nodePtr != nullptr){
+            nextPtr = nodePtr->next;
+            delete nodePtr;
+            nodePtr = nextPtr;
+        }
+    }
 }
 
 template <class T>
