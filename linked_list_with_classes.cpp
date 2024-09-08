@@ -72,7 +72,48 @@ public:
             nodePtr->setNext(newNode);
         }
     }
+    void insert(int index , int value){
+        if (index < 0){
+            cout<<endl<<"Invalid index...";
+        }
+        else if(index == 0)
+        {
+            if(!head){
+                head = new node;
+                head->setValue(value);
+                head->setNext(nullptr);
+            }else{
+                node* newNode = new node;
+                newNode->setValue(value);
+                newNode->setNext(head);
+                head = newNode;
+            }
+        }
+        else
+        {
+            node * nodePtr = head;
+            node * newNode = new node;
+            node * prev;
 
+            newNode->setValue(value);
+
+            while(nodePtr){
+                if (index == 0){
+                    break;
+                }
+                index--;
+                prev = nodePtr;
+                nodePtr = nodePtr->getNext();
+            }
+
+            if(index == 0){
+                newNode->setNext(nodePtr);
+                prev->setNext(newNode);
+            }else{
+                cout<<endl<<"Invalid Index...";
+            }
+        }
+    }
 };
 
 
@@ -83,7 +124,7 @@ int main(){
     list.append(5);
     list.append(7);
     list.display();
-    // list.insert(1);
+    list.insert(4,8);
     // list.insert(9);
     list.display();
     // list.delete(2);
