@@ -38,6 +38,20 @@ public:
         this->head = NULL;
     }
 
+    void display(){
+        if(!head){
+            cout<<endl<<"The list is empty..."<<endl;
+        }else{
+            node * nodePtr = head;
+
+            while(nodePtr){
+                cout<<nodePtr->getValue()<<" . ";
+                nodePtr = nodePtr->getNext();
+            }
+            cout<<endl;
+        }
+    }
+
     void append(int value)
     {
         node *newNode = new node;
@@ -58,4 +72,28 @@ public:
             nodePtr->setNext(newNode);
         }
     }
+
 };
+
+
+int main(){
+    integerList list;
+    list.display();
+    list.append(2);
+    list.append(5);
+    list.append(7);
+    list.display();
+    // list.insert(1);
+    // list.insert(9);
+    list.display();
+    // list.delete(2);
+    list.display();
+    // list.delete(5);
+    list.display();
+    // list.delete(9);
+    list.display();
+    // list.delete(11);
+    list.display();
+    _getch();
+    return 0;
+}
