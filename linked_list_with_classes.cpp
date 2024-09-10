@@ -243,40 +243,20 @@ public:
 
     }
 
-    void reverse(){
-        node * nodePtr = head;
-        node * newHead;
-        node * prev;
+    void reverse() {
+    node* current = head;
+    node* prev = nullptr;
+    node* next = nullptr;
 
-        while ( nodePtr->getNext() ){
-            prev = nodePtr;
-            nodePtr = nodePtr->getNext();
-        }
-        prev->setNext(nullptr);
-        newHead = nodePtr;
-
-
-        while(head->getNext() != nullptr){
-            prev = nullptr;
-            nodePtr = head;
-            while (nodePtr->getNext())
-            {
-                prev = nodePtr;
-                nodePtr = nodePtr->getNext();
-            }
-
-
-            prev->setNext(nullptr);   
-            node * tempnode = newHead;
-            while(tempnode->getNext()){
-                tempnode = tempnode->getNext();
-            }
-            tempnode->setNext(nodePtr);
-            nodePtr->setNext(nullptr);   
-        }
-        nodePtr->setNext(prev);
-        head = newHead;
+    while (current != nullptr) {
+        next = current->getNext(); 
+        current->setNext(prev);    
+        prev = current;            
+        current = next;
     }
+
+    head = prev;
+}
 
 };
 
