@@ -72,6 +72,7 @@ public:
             nodePtr->setNext(newNode);
         }
     }
+    
     void insert(int index , int value){
         if (index < 0){
             cout<<endl<<"Invalid index...";
@@ -114,6 +115,15 @@ public:
             }
         }
     }
+
+    void insertAtBegin(int value){
+        insert(0,value);
+    }
+
+    void insertAtEnd(int value){
+        append(value);
+    }
+
 };
 
 
