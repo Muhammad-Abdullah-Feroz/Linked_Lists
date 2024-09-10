@@ -242,6 +242,42 @@ public:
         }
 
     }
+
+    void reverse(){
+        node * nodePtr = head;
+        node * newHead;
+        node * prev;
+
+        while ( nodePtr->getNext() ){
+            prev = nodePtr;
+            nodePtr = nodePtr->getNext();
+        }
+        prev->setNext(nullptr);
+        newHead = nodePtr;
+
+
+        while(head->getNext() != nullptr){
+            prev = nullptr;
+            nodePtr = head;
+            while (nodePtr->getNext())
+            {
+                prev = nodePtr;
+                nodePtr = nodePtr->getNext();
+            }
+
+
+            prev->setNext(nullptr);   
+            node * tempnode = newHead;
+            while(tempnode->getNext()){
+                tempnode = tempnode->getNext();
+            }
+            tempnode->setNext(nodePtr);
+            nodePtr->setNext(nullptr);   
+        }
+        nodePtr->setNext(prev);
+        head = newHead;
+    }
+
 };
 
 int main()
@@ -273,6 +309,8 @@ int main()
     // list.search(11);
     // list.search(8);
     list.sort();
+    list.display();
+    list.reverse();
     list.display();
 
 
