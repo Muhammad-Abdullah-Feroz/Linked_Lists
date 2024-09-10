@@ -178,28 +178,104 @@ public:
             delete nodePtr;
         }
     }
+
+    void update(int value, int newValue)
+    {
+        node *nodePtr = head;
+        bool swapped = false;
+
+        while (nodePtr)
+        {
+            if (nodePtr->getValue() == value)
+            {
+                nodePtr->setValue(newValue);
+                swapped = true;
+                break;
+            }
+            nodePtr = nodePtr->getNext();
+        }
+
+        if (not swapped)
+        {
+            cout << endl
+                 << "Value not found..." << endl;
+        }
+    }
+
+    void search(int value)
+    {
+        node *nodePtr = head;
+        int index = 0;
+        bool found = false;
+
+        while (nodePtr)
+        {
+            if (nodePtr->getValue() == value)
+            {
+                found = true;
+                break;
+            }
+            nodePtr = nodePtr->getNext();
+            index++;
+        }
+        if (found){
+            cout<<endl<<"The value "<<value<<" first occurs at index "<<index<<endl;
+        }else{
+            cout<<endl<<"Value "<<value<<" not found...";
+        }
+    }
+
+    void sort(){
+        node * i = head;
+        node * j = head;
+
+        for(i ; i->getNext(); i = i->getNext()){
+            j = head;
+            for(j ; j->getNext() ; j = j->getNext()){
+                    node * tempNode = j->getNext();
+                if( j->getValue() > tempNode->getValue() ){
+                    int temp = j->getValue();
+                    j->setValue( tempNode->getValue() );
+                    tempNode->setValue(temp);
+                }
+            }
+        }
+
+    }
 };
 
 int main()
 {
     integerList list;
     list.display();
-    list.append(2);
     list.append(5);
+    list.append(2);
     list.append(7);
+    list.append(6);
+    list.append(3);
     list.display();
-    list.insert(3, 8);
-    // list.insert(9);
+    // list.insert(3, 8);
+    // // list.insert(9);
+    // list.display();
+    // // list.delete(2);
+    // list.display();
+    // list.deleteNode(5);
+    // list.display();
+    // list.deleteNode(2);
+    // list.display();
+    // list.insertAtEnd(11);
+    // list.insertAtBegin(11);
+    // list.display();
+    // list.update(9, 3);
+    // list.display();
+
+    // list.search(5);
+    // list.search(11);
+    // list.search(8);
+    list.sort();
     list.display();
-    // list.delete(2);
-    list.display();
-    list.deleteNode(5);
-    list.display();
-    list.deleteNode(2);
-    list.display();
-    list.insertAtEnd(11);
-    list.insertAtBegin(11);
-    list.display();
+
+
     _getch();
     return 0;
 }
