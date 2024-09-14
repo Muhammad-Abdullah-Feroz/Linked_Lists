@@ -75,6 +75,7 @@ public:
     void append(int value);
     void insertAtStart(int value);
     void insert(int idx, int value);
+    void deleteNode(int value);
     void display();
     void reverse();
 };
@@ -179,14 +180,58 @@ void dList::insert(int idx, int value)
     }
 }
 
-void dList::reverse(){
-    if (head == nullptr){
-        cout<<endl<<"List is empty...";
-    }else{
-        node * current = head;
-        node * next;
+void dList::deleteNode(int value)
+{
+    if (head == nullptr)
+    {
+        cout << endl
+             << "List is already empty...";
+        return;
+    }
+    else
+    {
+        node *nodePtr = head;
+        while (nodePtr)
+        {
+            if (nodePtr->getValue() == value)
+            {
+                if (nodePtr == head)
+                {
+                    head = nodePtr->getNext();
+                    head->setPrev(nullptr);
+                }
+                else if (nodePtr == tail)
+                {
+                    tail = nodePtr->getPrev();
+                    tail->setNext(nullptr);
+                }
+                else
+                {
+                    nodePtr->getPrev()->setNext(nodePtr->getNext());
+                    nodePtr->getNext()->setPrev(nodePtr->getPrev());
+                }
+                delete nodePtr;
+                return;
+            }
+            nodePtr = nodePtr->getNext();
+        }
+    }
+}
 
-        while(current){
+void dList::reverse()
+{
+    if (head == nullptr)
+    {
+        cout << endl
+             << "List is empty...";
+    }
+    else
+    {
+        node *current = head;
+        node *next;
+
+        while (current)
+        {
             next = current->getNext();
             current->setNext(current->getPrev());
             current->setPrev(next);

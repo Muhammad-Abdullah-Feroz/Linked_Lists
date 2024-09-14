@@ -24,13 +24,14 @@ int main()
     // list.display();
     // // list.delete(2);
     // list.display();
-    // list.deleteNode(5);
+    list.deleteNode(5);
     // list.display();
-    // list.deleteNode(2);
+    list.deleteNode(80);
+    list.deleteNode(87);
     // list.display();
     // list.insertAtEnd(11);
     // list.insertAtBegin(11);
-    // list.display();
+    list.display();
     // list.update(9, 3);
     // list.display();
 
