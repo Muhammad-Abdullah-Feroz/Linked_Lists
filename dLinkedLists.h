@@ -66,6 +66,7 @@ public:
     dList();
     ~dList();
     void append(int value);
+    void display();
 
 };
 
@@ -87,7 +88,21 @@ void dList::append(int value){
         newNode->setPrev(tail);
         tail = newNode;
     }
+}
 
+void dList::display(){
+    node * nodePtr = head;
+
+    if (!nodePtr){
+        cout<<endl<<"List is empty";
+    }else{
+        cout<<endl;
+        while(nodePtr->getNext()){
+            cout<<nodePtr->getValue()<<" -> ";
+            nodePtr = nodePtr->getNext();
+        }
+        cout<<nodePtr->getValue();
+    }
 }
 
 

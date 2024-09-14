@@ -3,13 +3,13 @@
 int main()
 {
     dList list;
-    // list.display();
+    list.display();
     list.append(5);
     list.append(2);
     list.append(7);
     list.append(6);
     list.append(3);
-    // list.display();
+    list.display();
     // list.insert(3, 8);
     // // list.insert(9);
     // list.display();
