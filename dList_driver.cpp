@@ -4,11 +4,16 @@ int main()
 {
     dList list;
     list.display();
-    list.append(5);
-    list.append(2);
-    list.append(7);
-    list.append(6);
-    list.append(3);
+    list.insertAtStart(5);
+    list.insertAtStart(2);
+    list.insertAtStart(7);
+    list.insertAtStart(6);
+    list.insertAtStart(3);
+    // list.append(5);
+    // list.append(2);
+    // list.append(7);
+    // list.append(6);
+    // list.append(3);
     list.display();
     // list.insert(3, 8);
     // // list.insert(9);

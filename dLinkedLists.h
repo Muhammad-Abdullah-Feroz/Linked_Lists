@@ -66,6 +66,7 @@ public:
     dList();
     ~dList();
     void append(int value);
+    void insertAtStart(int value);
     void display();
 
 };
@@ -105,6 +106,18 @@ void dList::display(){
     }
 }
 
+void dList::insertAtStart(int value){
+    node* newNode = new node(value);
+
+    if(head == nullptr){
+        head = newNode;
+        tail = head;
+    }else{
+        newNode->setNext(head);
+        head->setPrev(newNode);
+        head = newNode;
+    }
+}
 
 dList::~dList()
 {
