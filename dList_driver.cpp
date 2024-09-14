@@ -15,7 +15,11 @@ int main()
     // list.append(6);
     // list.append(3);
     list.display();
-    // list.insert(3, 8);
+    list.insert(3, 83);
+    list.insert(0, 80);
+    list.insert(9, 89);
+    list.insert(7, 87);
+    list.display();
     // // list.insert(9);
     // list.display();
     // // list.delete(2);

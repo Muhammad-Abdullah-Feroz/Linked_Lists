@@ -1,7 +1,7 @@
 #pragma once
 
-#include<iostream>
-#include<conio.h>
+#include <iostream>
+#include <conio.h>
 
 using namespace std;
 
@@ -9,17 +9,18 @@ class node
 {
 private:
     int value;
-    node* next;
-    node* prev;
+    node *next;
+    node *prev;
+
 public:
     node();
     node(int value);
     int getValue();
-    node* getNext();
-    node* getPrev();
+    node *getNext();
+    node *getPrev();
     void setValue(int newVal);
-    void setNext(node * nextNode);
-    void setPrev(node * prevNode);
+    void setNext(node *nextNode);
+    void setPrev(node *prevNode);
 };
 
 node::node()
@@ -36,39 +37,45 @@ node::node(int value)
     prev = nullptr;
 }
 
-int node::getValue(){
+int node::getValue()
+{
     return this->value;
 }
-node* node::getNext(){
+node *node::getNext()
+{
     return this->next;
 }
-node* node::getPrev(){
+node *node::getPrev()
+{
     return this->prev;
 }
 
-void node::setNext(node * nextNode){
+void node::setNext(node *nextNode)
+{
     this->next = nextNode;
 }
-void node::setPrev(node * prevNode){
+void node::setPrev(node *prevNode)
+{
     this->prev = prevNode;
 }
-void node::setValue(int newVal){
+void node::setValue(int newVal)
+{
     this->value = newVal;
 }
-
 
 class dList
 {
 private:
-    node * head;
-    node * tail;
+    node *head;
+    node *tail;
+
 public:
     dList();
     ~dList();
     void append(int value);
     void insertAtStart(int value);
+    void insert(int idx, int value);
     void display();
-
 };
 
 dList::dList()
@@ -77,13 +84,17 @@ dList::dList()
     tail = nullptr;
 }
 
-void dList::append(int value){
-    node * newNode = new node(value);
+void dList::append(int value)
+{
+    node *newNode = new node(value);
 
-    if(head == nullptr){
+    if (head == nullptr)
+    {
         head = newNode;
         tail = head;
-    }else{
+    }
+    else
+    {
         // nodePtr = tail;
         tail->setNext(newNode);
         newNode->setPrev(tail);
@@ -91,31 +102,79 @@ void dList::append(int value){
     }
 }
 
-void dList::display(){
-    node * nodePtr = head;
+void dList::display()
+{
+    node *nodePtr = head;
 
-    if (!nodePtr){
-        cout<<endl<<"List is empty";
-    }else{
-        cout<<endl;
-        while(nodePtr->getNext()){
-            cout<<nodePtr->getValue()<<" -> ";
+    if (!nodePtr)
+    {
+        cout << endl
+             << "List is empty";
+    }
+    else
+    {
+        cout << endl;
+        while (nodePtr->getNext())
+        {
+            cout << nodePtr->getValue() << " -> ";
             nodePtr = nodePtr->getNext();
         }
-        cout<<nodePtr->getValue();
+        cout << nodePtr->getValue();
     }
 }
 
-void dList::insertAtStart(int value){
-    node* newNode = new node(value);
+void dList::insertAtStart(int value)
+{
+    node *newNode = new node(value);
 
-    if(head == nullptr){
+    if (head == nullptr)
+    {
         head = newNode;
         tail = head;
-    }else{
+    }
+    else
+    {
         newNode->setNext(head);
         head->setPrev(newNode);
         head = newNode;
+    }
+}
+
+void dList::insert(int idx, int value)
+{
+    if (idx < 0)
+    {
+        cout << endl
+             << "Invalid Index...";
+    }
+    else if (idx == 0)
+    {
+        insertAtStart(value);
+    }
+    else
+    {
+        node *nodePtr = head;
+        int index = 0;
+        while (nodePtr && index != idx)
+        {
+            nodePtr = nodePtr->getNext();
+            index++;
+        }
+        if (index == idx)
+        {
+            if (!nodePtr)
+            {
+                append(value);
+            }
+            else
+            {
+                node *newNode = new node(value);
+                newNode->setNext(nodePtr);
+                newNode->setPrev(nodePtr->getPrev());
+                nodePtr->getPrev()->setNext(newNode);
+                nodePtr->setPrev(newNode);
+            }
+        }
     }
 }
 
