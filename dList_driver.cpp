@@ -39,8 +39,8 @@ int main()
     // list.search(8);
     // list.sort();
     // list.display();
-    // list.reverse();
-    // list.display();
+    list.reverse();
+    list.display();
 
 
     _getch();

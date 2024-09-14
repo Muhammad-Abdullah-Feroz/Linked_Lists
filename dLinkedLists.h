@@ -76,6 +76,7 @@ public:
     void insertAtStart(int value);
     void insert(int idx, int value);
     void display();
+    void reverse();
 };
 
 dList::dList()
@@ -175,6 +176,26 @@ void dList::insert(int idx, int value)
                 nodePtr->setPrev(newNode);
             }
         }
+    }
+}
+
+void dList::reverse(){
+    if (head == nullptr){
+        cout<<endl<<"List is empty...";
+    }else{
+        node * current = head;
+        node * next;
+
+        while(current){
+            next = current->getNext();
+            current->setNext(current->getPrev());
+            current->setPrev(next);
+            current = next;
+        }
+
+        current = head;
+        head = tail;
+        tail = current;
     }
 }
 
