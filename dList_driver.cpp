@@ -29,15 +29,13 @@ int main()
     list.deleteNode(80);
     list.deleteNode(87);
     // list.display();
-    // list.insertAtEnd(11);
-    // list.insertAtBegin(11);
     list.display();
     // list.update(9, 3);
     // list.display();
 
-    // list.search(5);
-    // list.search(11);
-    // list.search(8);
+    list.search(5);
+    list.search(7);
+    list.search(83);
     // list.sort();
     // list.display();
     list.reverse();

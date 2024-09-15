@@ -77,6 +77,7 @@ public:
     void insert(int idx, int value);
     void deleteNode(int value);
     void display();
+    void search(int value);
     void reverse();
 };
 
@@ -241,6 +242,29 @@ void dList::reverse()
         current = head;
         head = tail;
         tail = current;
+    }
+}
+
+void dList::search(int value){
+    if(head == nullptr){
+        cout<<endl<<"List is empty...";
+    }else{
+        node * nodePtr = head;
+        int index = 0;
+        bool found = false;
+
+        while(nodePtr){
+            if(nodePtr->getValue() == value){
+                found = true;
+                cout<<endl<<"The value "<<value<<" is at index "<<index;
+                break;
+            }
+            nodePtr = nodePtr->getNext();
+            index++;
+        }
+        if(!found){
+            cout<<endl<<"The value "<<value<<" was not found in the list.";
+        }
     }
 }
 
