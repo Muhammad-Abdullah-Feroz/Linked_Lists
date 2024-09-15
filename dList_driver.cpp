@@ -30,8 +30,8 @@ int main()
     list.deleteNode(87);
     // list.display();
     list.display();
-    // list.update(9, 3);
-    // list.display();
+    list.update(2, 5);
+    list.display();
 
     list.search(5);
     list.search(7);

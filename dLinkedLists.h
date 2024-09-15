@@ -78,6 +78,7 @@ public:
     void deleteNode(int value);
     void display();
     void search(int value);
+    void update(int value , int newVal);
     void reverse();
 };
 
@@ -264,6 +265,24 @@ void dList::search(int value){
         }
         if(!found){
             cout<<endl<<"The value "<<value<<" was not found in the list.";
+        }
+    }
+}
+
+void dList::update(int value , int newVal){
+    if(head == nullptr){
+        cout<<endl<<"List is empty...";
+        return;
+    }
+    else{
+        node * nodePtr = head;
+
+        while(nodePtr){
+            if(nodePtr->getValue() == value){
+                nodePtr->setValue(newVal);
+                return;
+            }
+            nodePtr = nodePtr->getNext();
         }
     }
 }
