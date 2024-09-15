@@ -289,4 +289,11 @@ void dList::update(int value , int newVal){
 
 dList::~dList()
 {
+    if (head){
+        node* nodePtr = head;
+        while(nodePtr){
+            nodePtr = nodePtr->getNext();
+            delete nodePtr->getPrev();
+        }
+    }
 }
