@@ -3,12 +3,12 @@
 int main()
 {
     cList list;
-    // list.display();
-    // list.append(5);
-    // list.append(2);
-    // list.append(7);
-    // list.append(6);
-    // list.append(3);
+    list.display();
+    list.append(5);
+    list.append(2);
+    list.append(7);
+    list.append(6);
+    list.append(3);
     list.insertAtIndex(0,5);
     list.insertAtIndex(0,2);
     list.insertAtIndex(2,7);

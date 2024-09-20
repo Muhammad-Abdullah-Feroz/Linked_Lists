@@ -44,13 +44,21 @@ public:
         head = nullptr;
         tail = nullptr;
     }
-    void display(){
-        node * nodePtr = head;
-        cout<<endl;
-        for(int i = 0 ; i < 10 ; i++){
-            cout<<nodePtr->getValue()<<" -> ";
+    void display()
+    {
+        node *nodePtr = head;
+        cout << endl;
+        if (!head)
+        {
+            cout << "List is empty...";
+            return;
+        }
+        while (nodePtr != tail)
+        {
+            cout << nodePtr->getValue() << " -> ";
             nodePtr = nodePtr->getNext();
         }
+        cout << nodePtr->getValue();
     }
     void insertAtStart(int value)
     {
@@ -85,31 +93,43 @@ public:
         else
             insertAtStart(value);
     }
-    void insertAtIndex(int idx , int value){
-        if(idx < 0){
-            cout<<endl<<"Invalid Index...";
-        }else{
-            if (idx == 0){
+    void insertAtIndex(int idx, int value)
+    {
+        if (idx < 0)
+        {
+            cout << endl
+                 << "Invalid Index...";
+        }
+        else
+        {
+            if (idx == 0)
+            {
                 insertAtStart(value);
                 return;
             }
-            node * nodePtr = head;
-            node * previous = nullptr;
-            while(previous != tail && idx != 0){
+            node *nodePtr = head;
+            node *previous = nullptr;
+            while (previous != tail && idx != 0)
+            {
                 previous = nodePtr;
                 nodePtr = nodePtr->getNext();
                 idx--;
             }
 
-            if(idx == 0){
-                node* newNode = new node(value);
+            if (idx == 0)
+            {
+                node *newNode = new node(value);
                 previous->setNext(newNode);
                 newNode->setNext(nodePtr);
-                if(previous == tail){
+                if (previous == tail)
+                {
                     tail = newNode;
                 }
-            }else{
-                cout<<endl<<"Invalid Index...";
+            }
+            else
+            {
+                cout << endl
+                     << "Invalid Index...";
             }
         }
     }
